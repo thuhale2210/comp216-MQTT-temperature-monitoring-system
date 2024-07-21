@@ -1,0 +1,2 @@
+import tkinter as tk
+from Group_3_Data_Generator import TemperatureDataGenerator
