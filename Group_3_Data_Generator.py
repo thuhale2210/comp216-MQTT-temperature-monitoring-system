@@ -2,7 +2,7 @@ import random
 import matplotlib.pyplot as plt
 
 class TemperatureDataGenerator:
-    def __init__(self, base=0, delta=0.15, mean=0, std_dev=5.0, uniform_min=-2, uniform_max=2):
+    def __init__(self, base=0, delta=0.15, mean=0, std_dev=2.0, uniform_min=-1, uniform_max=1):
         self.base = base
         self.delta = delta
         self.mean = mean
@@ -18,8 +18,8 @@ class TemperatureDataGenerator:
     @property
     def random_value(self):
         # Scale the normalized random value to the range [-40, 40]
-        x_min = -40
-        x_max = 40
+        x_min = -5
+        x_max = 5
         m = x_max - x_min
         c = x_min
         x = self.__generate_normalized_value()
