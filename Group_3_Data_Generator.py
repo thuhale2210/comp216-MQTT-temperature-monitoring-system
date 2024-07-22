@@ -2,7 +2,7 @@ import random
 import matplotlib.pyplot as plt
 
 class TemperatureDataGenerator:
-    def __init__(self, base=0, delta=0.15, mean=0, std_dev=2.0, uniform_min=-1, uniform_max=1):
+    def __init__(self, base=0, delta=0.15, mean=0, std_dev=5.0, uniform_min=-2, uniform_max=2):
         self.base = base
         self.delta = delta
         self.mean = mean

@@ -14,6 +14,9 @@ class TemperatureDisplayChart:
         # Create UI
         self.initUI()
 
+        # Draw the initial chart
+        self.draw_charts()
+
     def initUI(self):
         # Create UI elements
         self.label_info = tk.Label(self.root, text="Data range:")
@@ -28,7 +31,7 @@ class TemperatureDisplayChart:
         self.label_range = tk.Label(self.root, text="")
         self.label_range.grid(row=1, column=0, columnspan=3)
         
-        self.canvas = Canvas(self.root, width=600, height=400, bg='white')
+        self.canvas = Canvas(self.root, width=700, height=400, bg='white')
         self.canvas.grid(row=2, column=0, columnspan=3)
 
     def draw_charts(self):
@@ -42,14 +45,14 @@ class TemperatureDisplayChart:
             self.label_range.config(text=f"Data range: {start_index} - {start_index + 5}")
             self.draw_rectangles_and_lines(start_index)
         except ValueError:
-            messagebox.showwarning("Invalid input", "Please enter a valid integer within the range 0 - 20")
+            messagebox.showwarning("Invalid input", "Please enter a valid integer within the range 0 - 14")
 
     def draw_rectangles_and_lines(self, start_index):
-        bar_width = 40
-        max_height = 300
-        spacing = 10
-        offset_x = 125
-        offset_y = -75
+        bar_width = 80
+        max_height = 500
+        spacing = 20
+        offset_x = 50
+        offset_y = -250
         scale = max_height / 80.0
         
         for i in range(6):
@@ -60,7 +63,7 @@ class TemperatureDisplayChart:
             x1 = x0 + bar_width
             y1 = offset_y + max_height
             
-            self.canvas.create_rectangle(x0, y0, x1, y1, fill='#cbc0d3')
+            self.canvas.create_rectangle(x0, y0, x1, y1, fill='#74c69d')
             if i > 0:
                 prev_value = self.data[start_index + i - 1]
                 prev_height = prev_value * scale
@@ -69,7 +72,7 @@ class TemperatureDisplayChart:
                 curr_x = x0 + bar_width / 2
                 curr_y = y0
                 
-                self.canvas.create_line(prev_x, prev_y, curr_x, curr_y, fill='#564a69')
+                self.canvas.create_line(prev_x, prev_y, curr_x, curr_y, fill='#bc4749')
 
 if __name__ == "__main__":
     root = tk.Tk()

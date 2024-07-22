@@ -7,7 +7,7 @@ import time
 class TemperatureDynamicChart:
     def __init__(self, root):
         self.root = root
-        self.root.title("Dynamic Temperature Data")
+        self.root.title("Dynamic Display")
 
         # Generate initial data
         self.data_generator = TemperatureDataGenerator()
@@ -31,7 +31,7 @@ class TemperatureDynamicChart:
         self.label = tk.Label(self.root, text="============================")
         self.label.grid(row=1, column=2)
 
-        self.button = Button(self.root, text="Start", command=self.updating_thread.start)
+        self.button = Button(self.root, text="Go", command=self.updating_thread.start)
         self.button.grid(row=1, column=1)
 
         self.canvas = Canvas(self.root, width=600, height=400, bg='pink')
