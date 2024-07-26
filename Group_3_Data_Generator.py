@@ -17,7 +17,7 @@ class TemperatureDataGenerator:
 
     @property
     def random_value(self):
-        # Scale the normalized random value to the range [-40, 40]
+        # Scale the normalized random value to the range [-5, 5]
         x_min = -5
         x_max = 5
         m = x_max - x_min

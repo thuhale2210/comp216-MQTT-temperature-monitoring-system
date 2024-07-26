@@ -25,14 +25,17 @@ class TemperatureDisplayChart:
         self.entry = Entry(self.root)
         self.entry.grid(row=0, column=1)
 
-        self.button = Button(self.root, text="Go", command=self.draw_charts)
-        self.button.grid(row=0, column=2)
+        self.go_button = Button(self.root, text="Go",width="8", command=self.draw_charts)
+        self.go_button.grid(row=0, column=2)
+
+        self.exit_button = Button(self.root, text="Exit", width="8", command=root.quit)
+        self.exit_button.grid(row=0, column=3)
 
         self.label_range = tk.Label(self.root, text="")
-        self.label_range.grid(row=1, column=0, columnspan=3)
+        self.label_range.grid(row=1, column=0, columnspan=4)
         
         self.canvas = Canvas(self.root, width=700, height=400, bg='white')
-        self.canvas.grid(row=2, column=0, columnspan=3)
+        self.canvas.grid(row=2, column=0, columnspan=4)
 
     def draw_charts(self):
         self.canvas.delete('all')
