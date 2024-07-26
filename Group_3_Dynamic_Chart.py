@@ -12,33 +12,54 @@ class TemperatureDynamicChart:
         # Generate initial data
         self.data_generator = TemperatureDataGenerator()
         self.data = self.data_generator.generate_data(20)
-        
+
+        # Create an event to control the thread execution
+        self.pause_event = threading.Event()
+        self.pause_event.set()  # Start in a running state
+
         # Create UI
         self.initUI()
 
     def initUI(self):
+        # Create UI elements
+        self.label = tk.Label(self.root, text="Temperature Data", font='Helvetica 18 bold italic')
+        self.label.grid(row=0, column=1, columnspan=3)
+
+        self.label = tk.Label(self.root, text="==========================")
+        self.label.grid(row=1, column=0)
+
+        self.label = tk.Label(self.root, text="==========================")
+        self.label.grid(row=1, column=4)
+
+        self.go_button = Button(self.root, text="Go", width="8", command=self.start_thread)
+        self.go_button.grid(row=1, column=1)
+
+        self.pause_button = Button(self.root, text="Pause", width="8", command=self.pause_thread)
+        self.pause_button.grid(row=1, column=2)
+
+        self.exit_button = Button(self.root, text="Exit", width="8", command=root.quit)
+        self.exit_button.grid(row=1, column=3)
+
+        self.canvas = Canvas(self.root, width=800, height=400, bg='pink')
+        self.canvas.grid(row=2, column=0, columnspan=5)
+
+    def start_thread(self):
         # Start the data updating thread
         self.updating_thread = threading.Thread(target=self.update_data)
         self.updating_thread.daemon = True
+        self.updating_thread.start()
 
-        # Create UI elements
-        self.label = tk.Label(self.root, text="Temperature Data")
-        self.label.grid(row=0, column=1)
-
-        self.label = tk.Label(self.root, text="============================")
-        self.label.grid(row=1, column=0)
-
-        self.label = tk.Label(self.root, text="============================")
-        self.label.grid(row=1, column=2)
-
-        self.button = Button(self.root, text="Go", command=self.updating_thread.start)
-        self.button.grid(row=1, column=1)
-
-        self.canvas = Canvas(self.root, width=600, height=400, bg='pink')
-        self.canvas.grid(row=2, column=0, columnspan=3)
+    def pause_thread(self):
+        if self.pause_event.is_set():
+            self.pause_event.clear()
+            self.pause_button.config(text="Resume")
+        else:
+            self.pause_event.set()
+            self.pause_button.config(text="Pause")
 
     def update_data(self):
         while True:
+            self.pause_event.wait()  # Wait until the event is set (resumed)
             # Remove the first item
             self.data.pop(0)
             # Add a new random value to the end of the list
@@ -51,7 +72,7 @@ class TemperatureDynamicChart:
     def draw_chart(self):
         self.canvas.delete('all')
         max_height = 300
-        offset_x = 50
+        offset_x = 125
         offset_y = -75
         scale = max_height / 80.0
         
