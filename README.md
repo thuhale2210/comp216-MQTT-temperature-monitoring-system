@@ -1,6 +1,3 @@
-Here's the `README.md` content generated as a markdown file:
-
-```markdown
 # MQTT Temperature Monitoring System
 
 This project is an MQTT-based temperature monitoring system that consists of a **Publisher** and a **Subscriber**. The Publisher generates temperature data and sends it to a specified MQTT topic, while the Subscriber listens to that topic and displays the data in a visual gauge format.
@@ -86,14 +83,13 @@ This system demonstrates a basic implementation of MQTT (Message Queuing Telemet
 2. Run the Subscriber:
 
    ```bash
-   python subscriber.py
+   python Group_3_Upgraded_Display_Gauge.py
    ```
 
    The Subscriber will connect to the MQTT broker and display the temperature data on a graphical gauge.
 
 ## Customization
 
-- **MQTT Topic**: The default topic is `"Temperature"`. You can change it in both the Publisher and Subscriber scripts.
 - **Data Generation**: The `TemperatureDataGenerator` class in the Publisher allows customization of temperature data generation, including random fluctuations, normal distribution, and step increments/decrements.
 - **UI Design**: The Tkinter-based gauge can be customized further by modifying the `draw_temperature_gauge` method in the Subscriber.
 
@@ -110,4 +106,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
