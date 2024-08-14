@@ -72,7 +72,7 @@ This system demonstrates a basic implementation of MQTT (Message Queuing Telemet
 2. Run the Publisher:
 
    ```bash
-   python Group_3_Upgraded_Publisher.py
+   python Group_3_Publisher.py
    ```
 
    The Publisher will start sending temperature data to the specified MQTT topic.
@@ -83,7 +83,8 @@ This system demonstrates a basic implementation of MQTT (Message Queuing Telemet
 2. Run the Subscriber:
 
    ```bash
-   python Group_3_Upgraded_Display_Gauge.py
+   python Group_3_Subscriber_Display_Gauge.py
+   python Group_3_Subscriber_Display_Bar.py
    ```
 
    The Subscriber will connect to the MQTT broker and display the temperature data on a graphical gauge.
