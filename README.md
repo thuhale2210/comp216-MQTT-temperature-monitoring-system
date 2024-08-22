@@ -44,8 +44,8 @@ This system demonstrates a basic implementation of MQTT (Message Queuing Telemet
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/mqtt-temperature-monitor.git
-   cd mqtt-temperature-monitor
+   git clone https://github.com/thuhale2210/comp216-MQTT-temperature-monitoring-system.git
+   cd comp216-MQTT-temperature-monitoring-system
    ```
 
 2. **Install Required Python Packages:**
